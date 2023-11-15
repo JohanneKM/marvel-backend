@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -18,6 +19,6 @@ app.all("*", (req, res) => {
   res.status(400).json({ message: "This route doesn't exist" });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server started");
 });
