@@ -5,6 +5,7 @@ const axios = require("axios");
 router.get("/characters", async (req, res) => {
   // pour pouvoir chercher un personnage selon son nom
   const { name } = req.query;
+  console.log("name ===>", name);
   let search = "";
   const filter = {};
   if (name) {
@@ -13,7 +14,7 @@ router.get("/characters", async (req, res) => {
 
   for (const key in filter) {
     search = search + `?${key}=${filter[key]}`;
-    console.log(search);
+    console.log("search ===>", search);
   }
   try {
     // console.log(req.query);
@@ -22,6 +23,7 @@ router.get("/characters", async (req, res) => {
     );
 
     console.log(response.data);
+    console.log("search ===>", search);
 
     res.json(response.data);
   } catch (error) {
