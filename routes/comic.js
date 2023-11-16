@@ -4,9 +4,24 @@ const axios = require("axios");
 
 // Route pour obtenir la liste de tous les comics
 router.get("/comics", async (req, res) => {
+  const { title } = req.query;
+  console.log("title ===>", title);
+  let search = "";
+  const filter = {};
+
+  if (title) {
+    filter.title = title;
+  }
+
+  for (const key in filter) {
+    search = search + `&${key}=${filter[key]}`;
+  }
+
+  console.log("search ===>", search);
+
   try {
     const response = await axios.get(
-      "https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=CMPMRZgEhNVtR0Xv"
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=CMPMRZgEhNVtR0Xv${search}`
     );
 
     console.log(response.data);
