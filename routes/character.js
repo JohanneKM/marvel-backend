@@ -13,13 +13,13 @@ router.get("/characters", async (req, res) => {
   }
 
   for (const key in filter) {
-    search = search + `?${key}=${filter[key]}`;
+    search = search + `&${key}=${filter[key]}`;
     console.log("search ===>", search);
   }
   try {
     // console.log(req.query);
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=CMPMRZgEhNVtR0Xv&name=3-D`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=CMPMRZgEhNVtR0Xv${search}`
     );
 
     console.log(response.data);
