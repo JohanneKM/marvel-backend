@@ -26,6 +26,7 @@ router.get("/comics", async (req, res) => {
 
     console.log(response.data);
     console.log("Salut");
+    console.log(typeof response.data);
 
     res.json(response.data);
   } catch (error) {
