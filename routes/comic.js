@@ -5,6 +5,8 @@ const axios = require("axios");
 // Route pour obtenir la liste de tous les comics
 router.get("/comics", async (req, res) => {
   const { title } = req.query;
+
+  // for the search bar
   console.log("title ===>", title);
   let search = "";
   const filter = {};
@@ -18,6 +20,8 @@ router.get("/comics", async (req, res) => {
   }
 
   console.log("search ===>", search);
+
+  // to sort the results by alphabetical order
 
   try {
     const response = await axios.get(

@@ -4,13 +4,23 @@ const axios = require("axios");
 
 router.get("/characters", async (req, res) => {
   // pour pouvoir chercher un personnage selon son nom
-  const { name } = req.query;
+  const { name, skip } = req.query;
+
   console.log("name ===>", name);
+  console.log("skip ===>", skip);
+
   let search = "";
   const filter = {};
+
   if (name) {
     filter.name = name;
   }
+
+  if (skip) {
+    filter.skip = skip;
+  }
+
+  console.log(filter);
 
   for (const key in filter) {
     search = search + `&${key}=${filter[key]}`;
