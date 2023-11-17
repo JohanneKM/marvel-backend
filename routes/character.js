@@ -4,6 +4,7 @@ const axios = require("axios");
 
 router.get("/characters", async (req, res) => {
   // pour pouvoir chercher un personnage selon son nom
+  console.log(req.query);
   const { name, skip } = req.query;
 
   console.log("name ===>", name);
