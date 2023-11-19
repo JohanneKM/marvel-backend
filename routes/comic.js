@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
@@ -8,6 +9,7 @@ router.get("/comics", async (req, res) => {
 
   // for the search bar
   console.log("title ===>", title);
+
   let search = "";
   const filter = {};
 
@@ -25,7 +27,7 @@ router.get("/comics", async (req, res) => {
 
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=CMPMRZgEhNVtR0Xv${search}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}${search}`
     );
 
     console.log(response.data);
